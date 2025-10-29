@@ -8,6 +8,7 @@ This boilerplate helps you create professional Claude Code plugins with:
 
 - **Custom Commands**: Slash commands for common workflows
 - **Specialized Agents**: AI agents optimized for specific tasks
+- **Skills**: Modular knowledge packages with workflows and bundled resources
 - **Event Hooks**: Automated responses to IDE events
 - **MCP Integration**: Model Context Protocol server configuration
 - **Marketplace Ready**: Pre-configured metadata for distribution
@@ -27,6 +28,9 @@ This boilerplate helps you create professional Claude Code plugins with:
 │       ├── commands/
 │       │   ├── webapp-starter.md
 │       │   └── generate-random-personas.md
+│       ├── skills/
+│       │   └── skill-creator/
+│       │       └── SKILL.md      # Skill definition
 │       ├── hooks/
 │       │   └── hooks.json        # Event hooks configuration
 │       └── .mcp.json            # MCP servers configuration
@@ -68,7 +72,7 @@ Use the included `webapp-starter` plugin as a template:
 
 1. Copy the plugin directory structure
 2. Update plugin metadata in `.claude-plugin/plugin.json`
-3. Add your custom commands, agents, and hooks
+3. Add your custom commands, agents, skills, and hooks
 4. Register the plugin in `marketplace.json`
 
 ## Plugin Components
@@ -100,6 +104,44 @@ model: sonnet
 
 Your agent's system prompt and behavior instructions.
 ```
+
+### Skills
+
+Skills are modular packages that extend Claude's capabilities with specialized knowledge, workflows, and tool integrations. They transform Claude into a domain-specific expert by providing procedural knowledge and reusable resources.
+
+Create a skill directory with a `SKILL.md` file:
+
+```
+skills/
+└── skill-name/
+    ├── SKILL.md (required)
+    ├── scripts/ (optional)
+    ├── references/ (optional)
+    └── assets/ (optional)
+```
+
+**SKILL.md structure:**
+
+```markdown
+---
+name: skill-name
+description: When and why this skill should be used
+---
+
+# Skill Name
+
+Instructions and workflows for Claude to follow when using this skill.
+
+## Usage
+
+Detailed guidance on how to apply this skill.
+```
+
+**Optional bundled resources:**
+
+- **scripts/**: Executable code for deterministic tasks (Python, Bash, etc.)
+- **references/**: Documentation loaded as needed (schemas, API docs, policies)
+- **assets/**: Files used in output (templates, icons, boilerplate code)
 
 ### Hooks
 
@@ -154,17 +196,20 @@ On Windows, using npx to run a package:
 The included example plugin demonstrates:
 
 - **Commands**:
-  - `/webapp-starter` - Create a basic SPA website structure
-  - `/generate-random-personas` - Generate random user personas
+  - `/webapp-starter` - Create a basic SPA website structure example command
+  - `/generate-random-personas` - Generate random user personas example command
 
 - **Agents**:
-  - `webapp-uidesigner` - UI design and styling specialist
+  - `webapp-uidesigner` - UI design and styling specialist example agent
+
+- **Skills**:
+  - `skill-creator` - Anthropic's skill-creator skill as guide for creating effective skills with workflows and bundled resources, as example skill
 
 - **Hooks**:
-  - Post-edit confirmation messages example
+  - Post-edit confirmation messages example hook
 
 - **MCP Integration**:
-  - shadcn component library integration example
+  - shadcn component library integration example MCP server configuration
 
 ## Plugin Metadata
 
