@@ -38,8 +38,8 @@ This boilerplate helps you create professional Claude Code plugins with:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd claude-code-marketplace-boilerplate
+git clone https://github.com/halans/cc-marketplace-boilerplate
+cd cc-marketplace-boilerplate
 ```
 
 ### 2. Configure Your Marketplace
